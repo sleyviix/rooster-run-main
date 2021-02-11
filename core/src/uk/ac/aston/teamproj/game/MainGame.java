@@ -69,6 +69,9 @@ public class MainGame extends Game {
 		 * Delegates render method to the play screen or whatever screen is active at that time.
 		 */
 		super.render();
+	
+
 		manager.update();
+
 	}
 }
