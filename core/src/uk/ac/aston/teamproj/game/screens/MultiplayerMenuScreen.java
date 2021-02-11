@@ -84,11 +84,7 @@ public class MultiplayerMenuScreen implements Screen {
 		continueBtn.addListener(new InputListener() {
 	            @Override
 	            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-<<<<<<< Updated upstream
-	                //Starts LocalHost Multiplayer
-=======
-	               //plays button pop sound
->>>>>>> Stashed changes
+
 	            	Sound sound = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
 	                sound.play(1F);
 	    			txt_ip.setTextFieldListener(new TextField.TextFieldListener() {
@@ -105,14 +101,11 @@ public class MultiplayerMenuScreen implements Screen {
 	    				
 	    				@Override
 	    				public void keyTyped(TextField textField, char c) {
-<<<<<<< Updated upstream
-	    					Sound sound = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
-	    	                sound.play(1F);
-=======
+
 	    					 //plays button pop sound
 	    					Sound sound2 = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
 	    	                sound2.play(1F);
->>>>>>> Stashed changes
+
 	    					name = textField.getText();
 	    				}
 	    			});
