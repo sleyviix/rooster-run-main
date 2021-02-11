@@ -86,7 +86,8 @@ public class MultiplayerMenuScreen implements Screen {
 	            
 	            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 	               //plays button sounds
-	            	
+	            	Sound sound = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
+	                sound.play(1F);
 	            	//Starts LocalHost Multiplayer
 	         
 	            	
@@ -94,7 +95,8 @@ public class MultiplayerMenuScreen implements Screen {
 	    	
 	    				@Override
 	    				public void keyTyped(TextField textField, char c) {
-	    					
+	    					Sound sound = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
+	    	                sound.play(1F);
 	    			
 	    					ip = textField.getText();
 	    					
