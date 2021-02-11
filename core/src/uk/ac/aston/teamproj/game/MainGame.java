@@ -37,7 +37,6 @@ public class MainGame extends Game {
 	public static final short PLANE_BIT = 512;
 	public static final short ROOSTER_BIT2 = 1024;
 
-	public static AssetManager manager;
 
 	@Override
 	public void create () {
@@ -49,9 +48,7 @@ public class MainGame extends Game {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		manager = new AssetManager();
-		manager.load("electric-transition-super-quick-www.mp3",Sound.class);
-		manager.finishLoading();
+	
 		setScreen(new MainMenuScreen(this));
 	}
 	
@@ -71,7 +68,7 @@ public class MainGame extends Game {
 		super.render();
 	
 
-		manager.update();
+	
 
 	}
 }

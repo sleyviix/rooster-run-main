@@ -90,8 +90,7 @@ public class MultiplayerMenuScreen implements Screen {
 	                sound.play(1F);
 
 	               //plays button sounds
-	            	Sound sound = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
-	                sound.play(1F);
+	            	
 	            	//Starts LocalHost Multiplayer
 	         
 	            	
@@ -105,8 +104,7 @@ public class MultiplayerMenuScreen implements Screen {
 	    					Sound sound = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
 	    	                sound.play(1F);
 
-	    					Sound sound = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
-	    	                sound.play(1F);
+	    					
 	    			
 
 	    					ip = textField.getText();
@@ -124,10 +122,7 @@ public class MultiplayerMenuScreen implements Screen {
 	    	                sound2.play(1F);
 
 
-	    					
-	    					Sound sound2 = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
-	    	                sound2.play(1F);
-
+	    				
 	    					name = textField.getText();
 	    				
 	    				}

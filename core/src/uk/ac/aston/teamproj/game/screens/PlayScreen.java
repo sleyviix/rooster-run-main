@@ -132,9 +132,7 @@ public class PlayScreen implements Screen {
 					Sound sound = Gdx.audio.newSound(Gdx.files.internal("electric-transition-super-quick-www.mp3"));
 	                sound.play(1F);
 
-					Sound sound = Gdx.audio.newSound(Gdx.files.internal("electric-transition-super-quick-www.mp3"));
-	                sound.play(1F);
-
+				
 					MovementJump pos = new MovementJump();
 					pos.x = player.getPositionX();
 					pos.x2 = player2.getPositionX();
@@ -160,7 +158,8 @@ public class PlayScreen implements Screen {
 		if (clientID == MPServer.playerCount.get(1)) {
 			if (player2.currentState != Rooster.State.DEAD) {
 				if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {	
-					MainGame.manager.get("electric-transition-super-quick-www.mp3",Sound.class).play();
+					Sound sound = Gdx.audio.newSound(Gdx.files.internal("electric-transition-super-quick-www.mp3"));
+	                sound.play(1F);
 					
 					MovementP2Jump pos = new MovementP2Jump();
 					pos.x = player.getPositionX();
