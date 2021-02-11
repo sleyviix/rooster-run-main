@@ -2,6 +2,7 @@ package uk.ac.aston.teamproj.game.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -82,21 +83,32 @@ public class MultiplayerMenuScreen implements Screen {
 		ImageButton continueBtn = new ImageButton(style);
 		continueBtn.addListener(new InputListener() {
 	            @Override
+	            
 	            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-	                //Starts LocalHost Multiplayer
+	               //plays button sounds
+	            	
+	            	//Starts LocalHost Multiplayer
+	         
 	            	
 	    			txt_ip.setTextFieldListener(new TextField.TextFieldListener() {
-	    				
+	    	
 	    				@Override
 	    				public void keyTyped(TextField textField, char c) {
+	    					
+	    			
 	    					ip = textField.getText();
+	    					
 	    				}
 	    			});
 	    			txt_name.setTextFieldListener(new TextField.TextFieldListener() {
 	    				
 	    				@Override
 	    				public void keyTyped(TextField textField, char c) {
+	    					
+	    					Sound sound2 = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
+	    	                sound2.play(1F);
 	    					name = textField.getText();
+	    				
 	    				}
 	    			});
 
@@ -109,8 +121,8 @@ public class MultiplayerMenuScreen implements Screen {
 	    			 */
 	            	System.out.println("Continue");
 	            	return true;
-	            }	       
-	    });
+		
+		}});
 		
 		
 		
@@ -124,12 +136,14 @@ public class MultiplayerMenuScreen implements Screen {
 	            @Override
 	            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 	            	//Sets to playScreen
+	            	Sound sound = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
+	                sound.play(1F);
 	            	System.out.println("Back");
 	            	MultiplayerMenuScreen.this.dispose();
 	            	game.setScreen(new MainMenuScreen(game));
 	            	return true;
 	            }	       
-	    });
+		});
 		
 		
 		/*
@@ -245,5 +259,4 @@ public class MultiplayerMenuScreen implements Screen {
 		txt_skin.dispose();
 		stage.dispose();
 	}
-	
 }

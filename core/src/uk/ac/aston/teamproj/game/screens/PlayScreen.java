@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -68,6 +69,8 @@ public class PlayScreen implements Screen {
 	// multiplayer
 	public static int clientID;
 	private HashMap<Bomb, Float> toExplode = new HashMap<>();
+	
+	
 
 	public PlayScreen(MainGame game, int clientID) {
 		this.game = game;
@@ -147,7 +150,9 @@ public class PlayScreen implements Screen {
 		
 		if (clientID == MPServer.playerCount.get(1)) {
 			if (player2.currentState != Rooster.State.DEAD) {
-				if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {			
+				if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {	
+					MainGame.manager.get("electric-transition-super-quick-www.mp3",Sound.class).play();
+					
 					MovementP2Jump pos = new MovementP2Jump();
 					pos.x = player.getPositionX();
 					pos.x2 = player2.getPositionX();

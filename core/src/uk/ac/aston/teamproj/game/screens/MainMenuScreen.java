@@ -2,6 +2,7 @@ package uk.ac.aston.teamproj.game.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -79,6 +80,9 @@ public class MainMenuScreen implements Screen {
 	            @Override
 	            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 	            	//do something
+	            	//plays button sounds
+	            	Sound sound = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
+	                sound.play(1F);
 	            	System.out.println("MULTI");
 	            	MainMenuScreen.this.dispose();
 	            	game.setScreen(new MultiplayerMenuScreen(game));
@@ -91,15 +95,20 @@ public class MainMenuScreen implements Screen {
 		style.up = skin.getDrawable("tutorial_inactive");  //set default image
 		style.over = skin.getDrawable("tutorial_active");  //set image for mouse over
 		
+
 		ImageButton tutorialBtn = new ImageButton(style);
 		tutorialBtn.addListener(new InputListener() {
 	            @Override
 	            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 	                //do something
+	            	//plays button sounds
+	            	Sound sound = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
+	                sound.play(1F);
 	            	System.out.println("TUTORIAL");
 	            	Gdx.net.openURI("https://www.youtube.com/watch?v=wHyzCWOFR3A&ab_channel=RoosterRun");
 	            	return true;
-	            }	       
+	            }	  
+	            
 	    });
 		
 		//Quit Button
@@ -112,6 +121,9 @@ public class MainMenuScreen implements Screen {
 	            @Override
 	            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
 	                //do something
+	            	//plays button sounds
+	            	Sound sound = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
+	                sound.play(1F);
 	            	System.out.println("QUIT");
 	            	Gdx.app.exit();
 	            	return true;
