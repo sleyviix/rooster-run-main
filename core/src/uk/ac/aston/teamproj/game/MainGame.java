@@ -37,7 +37,7 @@ public class MainGame extends Game {
 	public static final short PLANE_BIT = 512;
 	public static final short ROOSTER_BIT2 = 1024;
 
-	public static AssetManager manager;
+	
 
 	@Override
 	public void create () {
@@ -67,6 +67,6 @@ public class MainGame extends Game {
 		 * Delegates render method to the play screen or whatever screen is active at that time.
 		 */
 		super.render();
-		
+	
 	}
 }
