@@ -78,7 +78,7 @@ public class Hud2 implements Disposable {
 		//table.row(); // Everything beyond this will be in a new row
 		table.add(scoreLabel).expandX();
 		table.add(coinsLabel).expandX();
-		table.add(livesLabel).expandX();
+		table.add(livesLabel).expandX().padRight(2);
 //		System.out.println(table.add(nameFixedLabel).getFillX());
 //		System.out.println(table.add(nameFixedLabel).getFillY());
 //		

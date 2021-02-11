@@ -49,7 +49,7 @@ public class Hud implements Disposable {
 	private Label scoreLabel;
 
 	private Integer coins;
-	private Label coinsFixedLabel;
+//	private Label coinsFixedLabel;
 	private Label coinsLabel;
 	
 	private Label playerFixedLabel;
@@ -59,23 +59,17 @@ public class Hud implements Disposable {
 	 
 
 	private Integer lives;
-	private Label livesFixedLabel;
+//	private Label livesFixedLabel;
 	private Label livesLabel;
-	
-	private ArrayList<Image> images;
 	
 	public Hud(SpriteBatch sb) {
 		
-		images = new ArrayList<>();
-		images.add(heartImage);
-		images.add(heartImage);
-		images.add(heartImage);
 		
 		coinTexture = new Texture("new_graphics/coin.png");
 		coinsImage = new Image(coinTexture);
 		coinsImage.setSize(24, 24);
 		
-		heartTexture = new Texture("new_graphics/heartTemp.png");
+		heartTexture = new Texture("new_graphics/heart-image.png");
 		heartImage = new Image(heartTexture);
 		heartImage.setSize(24, 24);
 		
@@ -102,14 +96,14 @@ public class Hud implements Disposable {
 		table.setFillParent(true); // table is the same of our stage
 
 		scoreLabel = new Label(String.format("\t%06d", score), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-		coinsLabel = new Label(String.format("\t %06d", coins), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-		livesLabel = new Label(String.format("\t %01d", lives), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		coinsLabel = new Label(String.format("\t%06d", coins), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		livesLabel = new Label(String.format("\t%01d", lives), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
 		playerFixedLabel = new Label("\tPLAYERS: ", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		nameFixedLabel = new Label("\tPlayer 1: ", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		scoreFixedLabel = new Label("\tSCORE", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-		//coinsFixedLabel = new Label("COINS", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-		livesFixedLabel = new Label("\tLIVES", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+//		coinsFixedLabel = new Label("COINS", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+//		livesFixedLabel = new Label("\tLIVES", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
 		table.add(playerFixedLabel).expandX().padTop(10);
 		table.add(scoreFixedLabel).expandX().padTop(10);
@@ -121,9 +115,9 @@ public class Hud implements Disposable {
 		
 		table.row(); // Everything beyond this will be in a new row
 		
-		table.add(nameFixedLabel).expandX();
-		table.add(scoreLabel).expandX();
-		table.add(coinsLabel).expandX();
+		table.add(nameFixedLabel).expandX().padLeft(6);
+		table.add(scoreLabel).expandX().padLeft(4);
+		table.add(coinsLabel).expandX().padLeft(10);
 //		table.add(heartContainer).width(40).height(10).pad(10);
 		table.add(livesLabel).expandX();
 
