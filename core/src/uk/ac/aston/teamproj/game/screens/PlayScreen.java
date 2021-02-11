@@ -69,6 +69,8 @@ public class PlayScreen implements Screen {
 	// multiplayer
 	public static int clientID;
 	private HashMap<Bomb, Float> toExplode = new HashMap<>();
+	
+	
 
 	public PlayScreen(MainGame game, int clientID) {
 		this.game = game;
@@ -125,7 +127,11 @@ public class PlayScreen implements Screen {
 			if (player.currentState != Rooster.State.DEAD) {
 				if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
 
+
 					 //plays button swoosh sound
+					Sound sound = Gdx.audio.newSound(Gdx.files.internal("electric-transition-super-quick-www.mp3"));
+	                sound.play(1F);
+
 					Sound sound = Gdx.audio.newSound(Gdx.files.internal("electric-transition-super-quick-www.mp3"));
 	                sound.play(1F);
 
@@ -153,7 +159,9 @@ public class PlayScreen implements Screen {
 		
 		if (clientID == MPServer.playerCount.get(1)) {
 			if (player2.currentState != Rooster.State.DEAD) {
-				if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {			
+				if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {	
+					MainGame.manager.get("electric-transition-super-quick-www.mp3",Sound.class).play();
+					
 					MovementP2Jump pos = new MovementP2Jump();
 					pos.x = player.getPositionX();
 					pos.x2 = player2.getPositionX();
