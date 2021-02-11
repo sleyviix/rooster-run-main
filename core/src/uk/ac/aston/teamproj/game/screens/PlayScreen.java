@@ -142,6 +142,8 @@ public class PlayScreen implements Screen {
 					pos.x = player.getPositionX();
 					pos.x2 = player2.getPositionX();
 					MPClient.client.sendTCP(pos);
+					
+					jumpCount1++;
 				}
 
 				if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
@@ -170,6 +172,8 @@ public class PlayScreen implements Screen {
 					pos.x = player.getPositionX();
 					pos.x2 = player2.getPositionX();
 					MPClient.client.sendTCP(pos);
+					
+					jumpCount2++;
 				}
 
 				if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) { 
