@@ -130,7 +130,7 @@ public class PlayScreen implements Screen {
 		// If our user is holding down mouse over camera throughout the game world.
 		if (clientID == MPServer.playerCount.get(0)) {
 			if (player.currentState != Rooster.State.DEAD) {
-				if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+				if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && jumpCount1 < MAX_JUMPS) {
 
 
 					 //plays button swoosh sound
@@ -162,7 +162,7 @@ public class PlayScreen implements Screen {
 		
 		if (clientID == MPServer.playerCount.get(1)) {
 			if (player2.currentState != Rooster.State.DEAD) {
-				if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {	
+				if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && jumpCount2 < MAX_JUMPS) {	
 					Sound sound = Gdx.audio.newSound(Gdx.files.internal("electric-transition-super-quick-www.mp3"));
 	                sound.play(1F);
 					
