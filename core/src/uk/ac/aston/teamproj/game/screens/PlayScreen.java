@@ -124,7 +124,13 @@ public class PlayScreen implements Screen {
 		if (clientID == MPServer.playerCount.get(0)) {
 			if (player.currentState != Rooster.State.DEAD) {
 				if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+<<<<<<< Updated upstream
 					MainGame.manager.get("electric-transition-super-quick-www.mp3",Sound.class).play();
+=======
+					 //plays button swoosh sound
+					Sound sound = Gdx.audio.newSound(Gdx.files.internal("electric-transition-super-quick-www.mp3"));
+	                sound.play(1F);
+>>>>>>> Stashed changes
 					MovementJump pos = new MovementJump();
 					pos.x = player.getPositionX();
 					pos.x2 = player2.getPositionX();

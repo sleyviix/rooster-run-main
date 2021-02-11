@@ -50,9 +50,7 @@ public class MainGame extends Game {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		manager = new AssetManager();
-		manager.load("electric-transition-super-quick-www.mp3",Sound.class);
-		manager.finishLoading();
+
 		setScreen(new MainMenuScreen(this));
 	}
 	
@@ -70,6 +68,6 @@ public class MainGame extends Game {
 		 * Delegates render method to the play screen or whatever screen is active at that time.
 		 */
 		super.render();
-		manager.update();
+	
 	}
 }
