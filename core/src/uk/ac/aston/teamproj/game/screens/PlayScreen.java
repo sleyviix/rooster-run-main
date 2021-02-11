@@ -66,6 +66,11 @@ public class PlayScreen implements Screen {
 	public static Rooster player;
 	public static Rooster player2;
 
+	// counts the number of consecutive jumps for each rooster
+	private static final int MAX_JUMPS = 2;
+	private int jumpCount1 = 0;
+	private int jumpCount2 = 0;
+	
 	// multiplayer
 	public static int clientID;
 	private HashMap<Bomb, Float> toExplode = new HashMap<>();
@@ -379,6 +384,14 @@ public class PlayScreen implements Screen {
 	public void makeBombExplode(Bomb bomb) {
 		float startTime = Gdx.graphics.getDeltaTime();
 		toExplode.put(bomb, startTime);
+	}
+	
+	public void resetJumpCount1() {
+		jumpCount1 = 0;
+	}
+	
+	public void resetJumpCount2() {
+		jumpCount2 = 0;
 	}
 
 }
