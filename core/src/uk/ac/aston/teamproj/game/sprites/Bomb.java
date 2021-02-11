@@ -51,7 +51,7 @@ public class Bomb extends InteractiveTileObject {
 	@Override
 	public void onHit() {
 		//for now, just log the event to the console
-		Gdx.app.log(String.valueOf(PlayScreen.clientID), "Bomb Collision");
+		Gdx.app.log(String.valueOf(PlayScreen.clientID), "Bomb hhh Collision");
 
 		//set category to destroyed bit
 		setCategoryFilter(MainGame.DESTROYED_BIT);
