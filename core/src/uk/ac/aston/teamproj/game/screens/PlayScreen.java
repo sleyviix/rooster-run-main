@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -65,9 +66,16 @@ public class PlayScreen implements Screen {
 	public static Rooster player;
 	public static Rooster player2;
 
+	// counts the number of consecutive jumps for each rooster
+	private static final int MAX_JUMPS = 2;
+	private int jumpCount1 = 0;
+	private int jumpCount2 = 0;
+	
 	// multiplayer
 	public static int clientID;
 	private HashMap<Bomb, Float> toExplode = new HashMap<>();
+	
+	
 
 	public PlayScreen(MainGame game, int clientID) {
 		this.game = game;
@@ -122,11 +130,20 @@ public class PlayScreen implements Screen {
 		// If our user is holding down mouse over camera throughout the game world.
 		if (clientID == MPServer.playerCount.get(0)) {
 			if (player.currentState != Rooster.State.DEAD) {
-				if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+				if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && jumpCount1 < MAX_JUMPS) {
+
+
+					 //plays button swoosh sound
+					Sound sound = Gdx.audio.newSound(Gdx.files.internal("electric-transition-super-quick-www.mp3"));
+	                sound.play(1F);
+
+				
 					MovementJump pos = new MovementJump();
 					pos.x = player.getPositionX();
 					pos.x2 = player2.getPositionX();
 					MPClient.client.sendTCP(pos);
+					
+					jumpCount1++;
 				}
 
 				if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
@@ -147,11 +164,16 @@ public class PlayScreen implements Screen {
 		
 		if (clientID == MPServer.playerCount.get(1)) {
 			if (player2.currentState != Rooster.State.DEAD) {
-				if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {			
+				if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && jumpCount2 < MAX_JUMPS) {	
+					Sound sound = Gdx.audio.newSound(Gdx.files.internal("electric-transition-super-quick-www.mp3"));
+	                sound.play(1F);
+					
 					MovementP2Jump pos = new MovementP2Jump();
 					pos.x = player.getPositionX();
 					pos.x2 = player2.getPositionX();
 					MPClient.client.sendTCP(pos);
+					
+					jumpCount2++;
 				}
 
 				if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) { 
@@ -366,6 +388,14 @@ public class PlayScreen implements Screen {
 	public void makeBombExplode(Bomb bomb) {
 		float startTime = Gdx.graphics.getDeltaTime();
 		toExplode.put(bomb, startTime);
+	}
+	
+	public void resetJumpCount1() {
+		jumpCount1 = 0;
+	}
+	
+	public void resetJumpCount2() {
+		jumpCount2 = 0;
 	}
 
 }

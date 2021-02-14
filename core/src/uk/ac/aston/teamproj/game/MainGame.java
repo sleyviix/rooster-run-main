@@ -3,6 +3,8 @@ package uk.ac.aston.teamproj.game;
 import java.io.IOException;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import uk.ac.aston.teamproj.game.net.MPServer;
@@ -34,8 +36,8 @@ public class MainGame extends Game {
 	public static final short COIN_BIT = 256;
 	public static final short PLANE_BIT = 512;
 	public static final short ROOSTER_BIT2 = 1024;
+	public static final short GROUND_BIT = 2048;
 
-	
 
 	@Override
 	public void create () {
@@ -47,7 +49,7 @@ public class MainGame extends Game {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		
+	
 		setScreen(new MainMenuScreen(this));
 	}
 	
@@ -65,5 +67,9 @@ public class MainGame extends Game {
 		 * Delegates render method to the play screen or whatever screen is active at that time.
 		 */
 		super.render();
+	
+
+	
+
 	}
 }

@@ -215,11 +215,20 @@ public class Rooster extends Sprite {
 		fdef.filter.maskBits = MainGame.DEFAULT_BIT |
 				MainGame.BRICK_BIT | MainGame.BOMB_BIT |
 				MainGame.LIGHTNING_BIT | MainGame.MUD_BIT |
-				MainGame.BOUNDARY_BIT | MainGame.COIN_BIT | MainGame.PLANE_BIT;
+				MainGame.BOUNDARY_BIT | MainGame.COIN_BIT | 
+				MainGame.PLANE_BIT | MainGame.GROUND_BIT;
 		
 		fdef.shape = shape;
 		b2body.createFixture(fdef);
-						
+		
+		// sensor beneath rooster
+		EdgeShape legsSensor = new EdgeShape(); //edgeshape is basically a line between 2 points
+		legsSensor.set(new Vector2( 12 / MainGame.PPM, -36 / MainGame.PPM),
+				 	   new Vector2(-12 / MainGame.PPM, -36 / MainGame.PPM));
+		fdef.shape = legsSensor;
+		fdef.isSensor = true; //it's not a colliding object, but just a sensor
+		
+		b2body.createFixture(fdef).setUserData("legs"); //uniquely identifies this fixture as "legs"						
 	}
 	
 	public void bombHit() {

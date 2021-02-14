@@ -22,6 +22,7 @@ import uk.ac.aston.teamproj.game.sprites.Boundary;
 import uk.ac.aston.teamproj.game.sprites.Brick;
 import uk.ac.aston.teamproj.game.sprites.Coin;
 import uk.ac.aston.teamproj.game.sprites.EndPlane;
+import uk.ac.aston.teamproj.game.sprites.Ground;
 import uk.ac.aston.teamproj.game.sprites.Lightning;
 import uk.ac.aston.teamproj.game.sprites.Mud;
 
@@ -29,25 +30,11 @@ public class B2WorldCreator {
 	
 	
 	public B2WorldCreator(World world, TiledMap map) {
-		//change when classes individual objects - take logic in own classes of obj
-		BodyDef bdef = new BodyDef();
-		PolygonShape shape = new PolygonShape();
-		FixtureDef fdef = new FixtureDef();
-		Body body;
 		
 		// create ground bodies/fixtures
 		for(MapObject object : map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)) {
 			Rectangle rect = ((RectangleMapObject) object).getRectangle();
-			
-			bdef.type = BodyDef.BodyType.StaticBody;
-			bdef.position.set((rect.getX() + rect.getWidth()/2)/MainGame.PPM, (rect.getY() + rect.getHeight()/2) / MainGame.PPM);
-			
-			body = world.createBody(bdef);
-			
-			// Rect starts at the center
-			shape.setAsBox(rect.getWidth() / 2 / MainGame.PPM, rect.getHeight() / 2 / MainGame.PPM);
-			fdef.shape = shape;
-			body.createFixture(fdef);
+			new Ground(world, map, rect);
 		}
 		
 		// create brick bodies / fixtures 
